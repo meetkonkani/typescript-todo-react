@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
-import InputFiled from './components/InputFiled';
-import Todolist from './components/Todolist';
+import InputField from './components/InputFiled';
+import TodoList from './components/singletodo';
 import { Todo } from './model';
-
+import Todolist from './components/Todolist';
 
 const App: React.FC = () => {
   const [todo, setTodo] = useState<string>("");
@@ -11,23 +11,25 @@ const App: React.FC = () => {
 
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
-    if(todo){
-      setTodos([...todos,{id:Date.now(),todo,isDone:false}])
+    if (todo) {
+      setTodos([...todos, { id: Date.now(), todo, isDone: false }]);
       setTodo("");
     }
   };
-   
-  console.log(todo)
+
+  console.log(todo);
 
   return (
-  <div className="App">
-   <span className="heading">TO-DO</span>
-   <InputFiled todo={todo} setTodo={setTodo} handleAdd={handleAdd}/>
-   <Todolist todos={todos} setTodos={setTodos}/>
-   {todos.map((t) => (
-    <li>{t.todo}</li>
-   ))}
-  </div>
+    <div className="App">
+      <span className="heading">TO-DO</span>
+      <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
+      <Todolist todos={todos} setTodos={setTodos} />
+      <ul>
+        {todos.map((t) => (
+          <li key={t.id}>{t.todo}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
