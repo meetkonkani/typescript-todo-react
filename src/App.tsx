@@ -21,7 +21,7 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <span className="heading">FocusFLow</span>
+      <span className="heading">FocusFlow</span>
       <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
       <Todolist todos={todos} setTodos={setTodos} />
     </div>
